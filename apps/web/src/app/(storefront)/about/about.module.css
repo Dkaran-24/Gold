@@ -1,0 +1,79 @@
+.page { background: var(--ivory); }
+.page figure { margin: 0; }
+.page h1, .page h2 { color: var(--burgundy); }
+.page em { font-weight: 400; }
+.body { color: var(--muted); font-size: 16px; line-height: 1.85; max-width: 49ch; }
+.hero { display: grid; grid-template-columns: 1fr 1.12fr; gap: clamp(32px, 5vw, 80px); align-items: center; padding-block: 26px 72px; }
+.heroCopy h1 { font-size: clamp(42px, 4.5vw, 66px); max-width: 12ch; }
+.heroCopy h1 em { display: block; }
+.heroCopy .body { margin: 25px 0 28px; }
+.signature { margin-top: 32px; padding-top: 17px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; letter-spacing: .13em; text-transform: uppercase; }
+.heroFigure { padding: 12px 0 0 12px; position: relative; }
+.heroFigure::before { content: ''; position: absolute; inset: 0 20px 48px 0; border: 1px solid var(--gold-light); pointer-events: none; }
+.heroImage { position: relative; aspect-ratio: 1.12; background: var(--burgundy); }
+.heroImage img { object-fit: cover; object-position: 48% center; }
+.heroFigure figcaption { display: flex; justify-content: space-between; gap: 16px; padding-top: 16px; color: var(--muted); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+.philosophy { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(36px, 7vw, 100px); padding-block: 64px 76px; border-top: 1px solid var(--line); align-items: center; }
+.philosophyImage { position: relative; aspect-ratio: 1.4; background: var(--champagne); }
+.philosophyImage img { object-fit: cover; object-position: 65% center; }
+.philosophyFigure figcaption { font-size: 12px; color: var(--muted); padding-top: 15px; }
+.philosophyCopy h2 { font-size: clamp(34px, 3.5vw, 48px); margin-bottom: 22px; }
+.philosophyCopy .body + .body { margin-top: 16px; }
+.philosophyCopy a { margin-top: 25px; }
+.experience { background: var(--champagne); padding-block: 64px; border-block: 1px solid var(--line); }
+.experienceHeading { display: flex; justify-content: space-between; gap: 28px; align-items: end; }
+.experienceHeading > p { color: var(--muted); font-size: 14px; }
+.experienceList { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 40px; }
+.experienceList li { padding: 0 32px; border-left: 1px solid #d5c6af; }
+.experienceList li:first-child { padding-left: 0; border: 0; }
+.experienceList li:last-child { padding-right: 0; }
+.number { font-family: Georgia, serif; font-size: 24px; color: var(--gold-dark); display: block; margin-bottom: 20px; }
+.experienceList h3 { font-size: 24px; margin-bottom: 12px; }
+.experienceList p { color: var(--muted); font-size: 14px; line-height: 1.8; }
+.showroom { padding-block: 76px; background: var(--champagne-light); scroll-margin-top: 110px; }
+.showroomGrid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 7vw, 100px); align-items: center; }
+.storeFigure img { display: block; width: 100%; height: auto; max-height: 600px; object-fit: contain; }
+.showroomCopy h2 { font-size: clamp(40px, 4vw, 56px); margin-bottom: 24px; }
+.address { border-top: 1px solid var(--line); margin-top: 28px; padding-top: 24px; max-width: 44ch; }
+.address :global(.eyebrow) { margin-bottom: 10px; }
+.address address { font-style: normal; line-height: 1.8; }
+.closing { background: var(--burgundy); color: var(--ivory); padding-block: 66px 72px; text-align: center; border-top: 4px solid var(--gold-light); }
+.closing :global(.eyebrow) { color: var(--gold-light); }
+.closing h2 { color: var(--ivory); font-size: clamp(38px, 4.5vw, 62px); }
+.closing > div > p:not(:global(.eyebrow)) { color: var(--gold-light); margin: 22px auto 0; max-width: 46ch; font-size: 15px; }
+.closingActions { justify-content: center; }
+.closingActions :global(.button) { background: var(--ivory); color: var(--burgundy); border-color: var(--ivory); }
+.closingActions :global(.button-outline) { background: transparent; color: var(--ivory); border-color: var(--gold-light); }
+.closingActions :global(.button:hover) { background: var(--gold-light); color: var(--burgundy); }
+@media (max-width: 1000px) and (min-width: 761px) {
+  .hero { gap: 28px; }
+  .heroCopy h1 { font-size: 45px; }
+  .heroImage { aspect-ratio: .85; }
+  .heroFigure figcaption span:last-child { display: none; }
+  .experienceList li { padding-inline: 20px; }
+}
+@media (max-width: 760px) {
+  .hero, .philosophy, .showroomGrid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .hero { padding-block: 12px 44px; }
+  .heroCopy h1 { font-size: clamp(40px, 9vw, 58px); max-width: 15ch; }
+  .heroCopy .body { margin-top: 20px; }
+  .signature { margin-top: 24px; }
+  .heroImage { aspect-ratio: 1.35; }
+  .heroFigure figcaption { font-size: 9px; }
+  .philosophy { padding-block: 44px; }
+  .philosophyCopy { grid-row: 1; }
+  .philosophyImage { aspect-ratio: 1.5; }
+  .body { font-size: 15px; }
+  .experience, .showroom { padding-block: 44px; }
+  .experienceHeading { display: block; }
+  .experienceHeading > p { margin-top: 18px; }
+  .experienceList { grid-template-columns: 1fr; margin-top: 28px; }
+  .experienceList li, .experienceList li:first-child, .experienceList li:last-child { padding: 24px 0; border-left: 0; border-top: 1px solid #d5c6af; }
+  .experienceList li:last-child { padding-bottom: 0; }
+  .number { margin-bottom: 8px; font-size: 20px; }
+  .showroomCopy { grid-row: 1; }
+  .storeFigure img { max-height: none; }
+  .closing { padding-block: 46px; }
+  .closingActions { flex-direction: column; align-items: stretch; max-width: 360px; margin-inline: auto; }
+}
+@media (prefers-reduced-motion: reduce) { .page :global(.button) { transition: none; transform: none; } }

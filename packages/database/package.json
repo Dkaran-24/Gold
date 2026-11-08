@@ -1,0 +1,16 @@
+{
+  "name": "@showroom/database",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "generate": "prisma generate",
+    "validate": "prisma validate",
+    "migrate": "dotenv -e ../../.env -- prisma migrate dev",
+    "deploy": "dotenv -e ../../.env -- prisma migrate deploy",
+    "owner": "dotenv -e ../../.env -- tsx scripts/create-owner.ts"
+  },
+  "dependencies": { "@prisma/client": "7.10.1", "@prisma/adapter-pg": "7.10.1", "bcryptjs": "^3.0.2", "dotenv": "^16.6.1", "dotenv-cli": "^8.0.0" },
+  "devDependencies": { "prisma": "7.10.1", "tsx": "^4.20.6" }
+}

@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+dist/
+coverage/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# TypeScript
+*.tsbuildinfo
+
+# Playwright
+playwright-report/
+test-results/
+
+# Local files
+.local/
+
+# Virtual Try-On WASM files
+apps/web/public/try-on/wasm/

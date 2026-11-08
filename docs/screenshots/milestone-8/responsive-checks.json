@@ -1,0 +1,457 @@
+[
+  {
+    "page": "overview",
+    "width": 1440,
+    "documentWidth": 1425,
+    "overflow": false,
+    "scrollWidth": 1425
+  },
+  {
+    "page": "overview",
+    "width": 1366,
+    "documentWidth": 1351,
+    "overflow": false,
+    "scrollWidth": 1351
+  },
+  {
+    "page": "overview",
+    "width": 768,
+    "documentWidth": 753,
+    "overflow": false,
+    "scrollWidth": 753
+  },
+  {
+    "page": "overview",
+    "width": 390,
+    "documentWidth": 375,
+    "overflow": false,
+    "scrollWidth": 375
+  },
+  {
+    "page": "overview",
+    "width": 360,
+    "documentWidth": 345,
+    "overflow": false,
+    "scrollWidth": 345
+  },
+  {
+    "page": "products",
+    "width": 1440,
+    "documentWidth": 1440,
+    "overflow": false,
+    "scrollWidth": 1440
+  },
+  {
+    "page": "products",
+    "width": 1366,
+    "documentWidth": 1366,
+    "overflow": false,
+    "scrollWidth": 1366
+  },
+  {
+    "page": "products",
+    "width": 768,
+    "documentWidth": 768,
+    "overflow": false,
+    "scrollWidth": 768
+  },
+  {
+    "page": "products",
+    "width": 390,
+    "documentWidth": 390,
+    "overflow": false,
+    "scrollWidth": 390
+  },
+  {
+    "page": "products",
+    "width": 360,
+    "documentWidth": 360,
+    "overflow": false,
+    "scrollWidth": 360
+  },
+  {
+    "page": "product-form",
+    "width": 1440,
+    "documentWidth": 1425,
+    "overflow": false,
+    "scrollWidth": 1425
+  },
+  {
+    "page": "product-form",
+    "width": 1366,
+    "documentWidth": 1351,
+    "overflow": false,
+    "scrollWidth": 1351
+  },
+  {
+    "page": "product-form",
+    "width": 768,
+    "documentWidth": 753,
+    "overflow": false,
+    "scrollWidth": 753
+  },
+  {
+    "page": "product-form",
+    "width": 390,
+    "documentWidth": 375,
+    "overflow": false,
+    "scrollWidth": 375
+  },
+  {
+    "page": "product-form",
+    "width": 360,
+    "documentWidth": 345,
+    "overflow": false,
+    "scrollWidth": 345
+  },
+  {
+    "page": "homepage",
+    "width": 1440,
+    "documentWidth": 1425,
+    "overflow": false,
+    "scrollWidth": 1425
+  },
+  {
+    "page": "homepage",
+    "width": 1366,
+    "documentWidth": 1351,
+    "overflow": false,
+    "scrollWidth": 1351
+  },
+  {
+    "page": "homepage",
+    "width": 768,
+    "documentWidth": 753,
+    "overflow": false,
+    "scrollWidth": 753
+  },
+  {
+    "page": "homepage",
+    "width": 390,
+    "documentWidth": 375,
+    "overflow": false,
+    "scrollWidth": 375
+  },
+  {
+    "page": "homepage",
+    "width": 360,
+    "documentWidth": 345,
+    "overflow": false,
+    "scrollWidth": 345
+  },
+  {
+    "page": "crm",
+    "width": 1440,
+    "documentWidth": 1425,
+    "overflow": false,
+    "scrollWidth": 1425
+  },
+  {
+    "page": "crm",
+    "width": 1366,
+    "documentWidth": 1351,
+    "overflow": false,
+    "scrollWidth": 1351
+  },
+  {
+    "page": "crm",
+    "width": 768,
+    "documentWidth": 753,
+    "overflow": false,
+    "scrollWidth": 753
+  },
+  {
+    "page": "crm",
+    "width": 390,
+    "documentWidth": 375,
+    "overflow": false,
+    "scrollWidth": 375
+  },
+  {
+    "page": "crm",
+    "width": 360,
+    "documentWidth": 345,
+    "overflow": false,
+    "scrollWidth": 345
+  },
+  {
+    "page": "availability",
+    "width": 1440,
+    "documentWidth": 1425,
+    "overflow": false,
+    "scrollWidth": 1425
+  },
+  {
+    "page": "availability",
+    "width": 1366,
+    "documentWidth": 1351,
+    "overflow": false,
+    "scrollWidth": 1351
+  },
+  {
+    "page": "availability",
+    "width": 768,
+    "documentWidth": 753,
+    "overflow": false,
+    "scrollWidth": 753
+  },
+  {
+    "page": "availability",
+    "width": 390,
+    "documentWidth": 375,
+    "overflow": false,
+    "scrollWidth": 375
+  },
+  {
+    "page": "availability",
+    "width": 360,
+    "documentWidth": 345,
+    "overflow": false,
+    "scrollWidth": 345
+  },
+  {
+    "page": "categories",
+    "width": 1440,
+    "documentWidth": 1440,
+    "overflow": false,
+    "scrollWidth": 1440
+  },
+  {
+    "page": "categories",
+    "width": 1366,
+    "documentWidth": 1366,
+    "overflow": false,
+    "scrollWidth": 1366
+  },
+  {
+    "page": "categories",
+    "width": 768,
+    "documentWidth": 768,
+    "overflow": false,
+    "scrollWidth": 768
+  },
+  {
+    "page": "categories",
+    "width": 390,
+    "documentWidth": 390,
+    "overflow": false,
+    "scrollWidth": 390
+  },
+  {
+    "page": "categories",
+    "width": 360,
+    "documentWidth": 360,
+    "overflow": false,
+    "scrollWidth": 360
+  },
+  {
+    "page": "collections",
+    "width": 1440,
+    "documentWidth": 1440,
+    "overflow": false,
+    "scrollWidth": 1440
+  },
+  {
+    "page": "collections",
+    "width": 1366,
+    "documentWidth": 1366,
+    "overflow": false,
+    "scrollWidth": 1366
+  },
+  {
+    "page": "collections",
+    "width": 768,
+    "documentWidth": 768,
+    "overflow": false,
+    "scrollWidth": 768
+  },
+  {
+    "page": "collections",
+    "width": 390,
+    "documentWidth": 390,
+    "overflow": false,
+    "scrollWidth": 390
+  },
+  {
+    "page": "collections",
+    "width": 360,
+    "documentWidth": 360,
+    "overflow": false,
+    "scrollWidth": 360
+  },
+  {
+    "page": "collection-editor",
+    "width": 1440,
+    "documentWidth": 1425,
+    "overflow": false,
+    "scrollWidth": 1425
+  },
+  {
+    "page": "collection-editor",
+    "width": 1366,
+    "documentWidth": 1351,
+    "overflow": false,
+    "scrollWidth": 1351
+  },
+  {
+    "page": "collection-editor",
+    "width": 768,
+    "documentWidth": 753,
+    "overflow": false,
+    "scrollWidth": 753
+  },
+  {
+    "page": "collection-editor",
+    "width": 390,
+    "documentWidth": 375,
+    "overflow": false,
+    "scrollWidth": 375
+  },
+  {
+    "page": "collection-editor",
+    "width": 360,
+    "documentWidth": 345,
+    "overflow": false,
+    "scrollWidth": 345
+  },
+  {
+    "page": "cms-editor",
+    "width": 1440,
+    "documentWidth": 1440,
+    "overflow": false,
+    "scrollWidth": 1440
+  },
+  {
+    "page": "cms-editor",
+    "width": 1366,
+    "documentWidth": 1366,
+    "overflow": false,
+    "scrollWidth": 1366
+  },
+  {
+    "page": "cms-editor",
+    "width": 768,
+    "documentWidth": 768,
+    "overflow": false,
+    "scrollWidth": 768
+  },
+  {
+    "page": "cms-editor",
+    "width": 390,
+    "documentWidth": 390,
+    "overflow": false,
+    "scrollWidth": 390
+  },
+  {
+    "page": "cms-editor",
+    "width": 360,
+    "documentWidth": 360,
+    "overflow": false,
+    "scrollWidth": 360
+  },
+  {
+    "page": "appointments",
+    "width": 1440,
+    "documentWidth": 1440,
+    "overflow": false,
+    "scrollWidth": 1440
+  },
+  {
+    "page": "appointments",
+    "width": 1366,
+    "documentWidth": 1366,
+    "overflow": false,
+    "scrollWidth": 1366
+  },
+  {
+    "page": "appointments",
+    "width": 768,
+    "documentWidth": 768,
+    "overflow": false,
+    "scrollWidth": 768
+  },
+  {
+    "page": "appointments",
+    "width": 390,
+    "documentWidth": 390,
+    "overflow": false,
+    "scrollWidth": 390
+  },
+  {
+    "page": "appointments",
+    "width": 360,
+    "documentWidth": 360,
+    "overflow": false,
+    "scrollWidth": 360
+  },
+  {
+    "page": "settings",
+    "width": 1440,
+    "documentWidth": 1440,
+    "overflow": false,
+    "scrollWidth": 1440
+  },
+  {
+    "page": "settings",
+    "width": 1366,
+    "documentWidth": 1366,
+    "overflow": false,
+    "scrollWidth": 1366
+  },
+  {
+    "page": "settings",
+    "width": 768,
+    "documentWidth": 768,
+    "overflow": false,
+    "scrollWidth": 768
+  },
+  {
+    "page": "settings",
+    "width": 390,
+    "documentWidth": 768,
+    "overflow": false,
+    "scrollWidth": 768
+  },
+  {
+    "page": "settings",
+    "width": 360,
+    "documentWidth": 360,
+    "overflow": false,
+    "scrollWidth": 360
+  },
+  {
+    "page": "login",
+    "width": 1440,
+    "documentWidth": 1440,
+    "overflow": false,
+    "scrollWidth": 1440
+  },
+  {
+    "page": "login",
+    "width": 1366,
+    "documentWidth": 1366,
+    "overflow": false,
+    "scrollWidth": 1366
+  },
+  {
+    "page": "login",
+    "width": 768,
+    "documentWidth": 768,
+    "overflow": false,
+    "scrollWidth": 768
+  },
+  {
+    "page": "login",
+    "width": 390,
+    "documentWidth": 390,
+    "overflow": false,
+    "scrollWidth": 390
+  },
+  {
+    "page": "login",
+    "width": 360,
+    "documentWidth": 360,
+    "overflow": false,
+    "scrollWidth": 360
+  }
+]

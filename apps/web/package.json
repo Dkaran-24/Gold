@@ -1,0 +1,35 @@
+{
+  "name": "@showroom/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.mts",
+    "predev": "node scripts/prepare-tryon-assets.mjs",
+    "prebuild": "node scripts/prepare-tryon-assets.mjs"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "@mediapipe/tasks-vision": "1.2.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0",
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-hook-form": "^7.65.0",
+    "tailwind-merge": "^3.3.1",
+    "three": "0.187.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.16",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/three": "0.187.0",
+    "tailwindcss": "^4.1.16"
+  }
+}

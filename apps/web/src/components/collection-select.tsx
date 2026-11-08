@@ -1,0 +1,3 @@
+'use client';
+import { useRouter } from 'next/navigation';
+export function CollectionSelect({ options }: { options: { slug: string; name: string }[] }) { const router = useRouter(); return <div className="field collection-select"><label htmlFor="browse-collection">Browse a collection</label><select id="browse-collection" value="" onChange={event => { if (event.target.value) router.push(`/collections/${event.target.value}`); }}><option value="">All jewellery</option>{options.map(c => <option key={c.slug} value={c.slug}>{c.name}</option>)}</select><span className="field-hint">Opens the collection’s curated selection.</span></div>; }

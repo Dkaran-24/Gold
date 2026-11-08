@@ -1,0 +1,667 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Availability {
+  AVAILABLE
+  RESERVED
+  SOLD
+  ARCHIVED
+}
+
+enum PublicationStatus {
+  DRAFT
+  PUBLISHED
+}
+
+enum Metal {
+  GOLD
+  SILVER
+  PLATINUM
+  MIXED
+}
+
+enum EnquiryStatus {
+  NEW
+  CONTACTED
+  INTERESTED
+  FOLLOW_UP
+  CONVERTED
+  NOT_INTERESTED
+  IN_PROGRESS
+  WAITING_FOR_CUSTOMER
+  CLOSED
+  SPAM
+}
+
+enum AppointmentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  RESCHEDULED
+  COMPLETED
+  CANCELLED
+  REQUESTED
+  RESCHEDULE_PROPOSED
+  NO_SHOW
+}
+
+enum RequestStatus {
+  NEW
+  CONTACTED
+  IN_PROGRESS
+  COMPLETED
+  ARCHIVED
+}
+
+model User {
+  id               String   @id @default(cuid())
+  // A unique constant slot enforces at most one owner, even across concurrent setup calls.
+  ownerSlot        Int      @unique @default(1)
+  email            String   @unique
+  passwordHash     String
+  name             String   @default("Showroom owner")
+  createdAt        DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt        DateTime @updatedAt @db.Timestamptz(3)
+  sessions         Session[]
+  passwordResets   PasswordReset[]
+  inventoryChanges InventoryHistory[]
+  enquiryNotes     EnquiryNote[]
+  auditLogs        AuditLog[]
+  enquiryChanges EnquiryHistory[]
+  appointmentChanges AppointmentHistory[]
+  appointmentNotes AppointmentNote[]
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  tokenHash String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  @@index([expiresAt])
+  @@index([userId])
+}
+
+model PasswordReset {
+  id        String    @id @default(cuid())
+  tokenHash String    @unique
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime  @db.Timestamptz(3)
+  usedAt    DateTime? @db.Timestamptz(3)
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+  @@index([userId, expiresAt])
+}
+
+model Category {
+  tryOnConfigurations TryOnConfiguration[]
+  id            String    @id @default(cuid())
+  name          String
+  slug          String    @unique
+  description   String    @default("")
+  imageUrl      String?
+  imagePublicId String?
+  visible       Boolean   @default(true)
+  sortOrder     Int       @default(0)
+  products      Product[]
+  createdAt     DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime  @updatedAt @db.Timestamptz(3)
+  @@index([visible, sortOrder])
+}
+
+model Product {
+  tryOnAsset ProductTryOnAsset?
+  tryOnJobs TryOnJob[]
+  id               String            @id @default(cuid())
+  name             String
+  sku              String            @unique
+  slug             String            @unique
+  description      String            @default("")
+  categoryId       String
+  category         Category          @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  metal            Metal
+  purity           String
+  grossWeight      Decimal           @db.Decimal(10, 3)
+  netWeight        Decimal           @db.Decimal(10, 3)
+  stoneWeight      Decimal?          @db.Decimal(10, 3)
+  stoneDetails     String?
+  diamondDetails   String?
+  gemstoneDetails  String?
+  hallmark         String?
+  huid             String?
+  publicPrice      Decimal?          @db.Decimal(14, 2)
+  enquiryOnly      Boolean           @default(true)
+  publicMakingCharge Decimal?        @db.Decimal(14, 2)
+  availability     Availability      @default(AVAILABLE)
+  publication      PublicationStatus @default(DRAFT)
+  featured         Boolean           @default(false)
+  exclusive        Boolean           @default(false)
+  arrivalDate      DateTime?         @db.Timestamptz(3)
+  newUntil         DateTime?         @db.Timestamptz(3)
+  seoTitle         String?
+  seoDescription   String?
+  deletedAt        DateTime?         @db.Timestamptz(3)
+  createdAt        DateTime          @default(now()) @db.Timestamptz(3)
+  updatedAt        DateTime          @updatedAt @db.Timestamptz(3)
+  privateDetails   ProductPrivate?
+  images           ProductImage[]
+  inventoryHistory InventoryHistory[]
+  collections      CollectionProduct[]
+  enquiries        Enquiry[]
+  views            ProductView[]
+  wishlists        Wishlist[]
+  homepageSections HomepageSection[]
+  appointments Appointment[]
+  @@index([publication, deletedAt, createdAt])
+  @@index([categoryId, availability])
+  @@index([metal, purity])
+  @@index([newUntil, arrivalDate])
+  @@index([featured])
+}
+
+model ProductPrivate {
+  productId     String   @id
+  product       Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  costPrice     Decimal? @db.Decimal(14, 2)
+  makingCharges Decimal? @db.Decimal(14, 2)
+  supplier      String?
+  internalNotes String?
+  updatedAt     DateTime @updatedAt @db.Timestamptz(3)
+}
+
+model ProductImage {
+  tryOnOverlays ProductTryOnAsset[]
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  publicId  String   @unique
+  url       String
+  alt       String
+  // The first image by position is the primary image; no conflicting primary flags.
+  position  Int
+  width     Int?
+  height    Int?
+  collectionCovers Collection[] @relation("CollectionCover")
+  collectionBanners Collection[] @relation("CollectionBanner")
+  bannerDesktops Banner[] @relation("BannerDesktop")
+  bannerMobiles Banner[] @relation("BannerMobile")
+  sectionDesktops HomepageSection[] @relation("SectionDesktop")
+  sectionMobiles HomepageSection[] @relation("SectionMobile")
+  format    String?
+  enquiryImages EnquiryImage[]
+  bytes     Int?
+  updatedAt DateTime @default(now()) @updatedAt @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  @@unique([productId, position])
+}
+
+model ImageCleanup {
+  publicId String @id
+  productId String
+  notBefore DateTime @db.Timestamptz(3)
+  attempts Int @default(0)
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  @@index([notBefore])
+}
+
+model InventoryHistory {
+  id         String       @id @default(cuid())
+  productId  String
+  product    Product      @relation(fields: [productId], references: [id], onDelete: Restrict)
+  previous   Availability?
+  next       Availability
+  reason     String?
+  actorId    String
+  actor      User         @relation(fields: [actorId], references: [id], onDelete: Restrict)
+  createdAt  DateTime     @default(now()) @db.Timestamptz(3)
+  @@index([productId, createdAt])
+  @@index([actorId])
+}
+
+model Collection {
+  id            String              @id @default(cuid())
+  name          String
+  slug          String              @unique
+  description   String              @default("")
+  imageUrl      String?
+  imagePublicId String?
+  visible       Boolean             @default(true)
+  bridal        Boolean             @default(false)
+  sortOrder     Int                 @default(0)
+  products      CollectionProduct[]
+  publication PublicationStatus @default(DRAFT)
+  archivedAt DateTime? @db.Timestamptz(3)
+  seoTitle String?
+  seoDescription String?
+  coverImageId String?
+  coverImage ProductImage? @relation("CollectionCover", fields: [coverImageId], references: [id], onDelete: Restrict)
+  bannerImageId String?
+  bannerImage ProductImage? @relation("CollectionBanner", fields: [bannerImageId], references: [id], onDelete: Restrict)
+  homepageSections HomepageSection[]
+  appointments Appointment[]
+  @@index([publication, archivedAt, sortOrder])
+  @@index([coverImageId])
+  @@index([bannerImageId])
+  createdAt     DateTime            @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime            @updatedAt @db.Timestamptz(3)
+}
+
+model CollectionProduct {
+  collectionId String
+  productId    String
+  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  product      Product    @relation(fields: [productId], references: [id], onDelete: Cascade)
+  position     Int        @default(0)
+  @@id([collectionId, productId])
+  @@unique([collectionId, position])
+  @@index([productId])
+}
+
+model Banner {
+  id            String    @id @default(cuid())
+  heading       String
+  internalName String @default("")
+  publication PublicationStatus @default(DRAFT)
+  desktopImageId String?
+  desktopImage ProductImage? @relation("BannerDesktop", fields: [desktopImageId], references: [id], onDelete: Restrict)
+  mobileImageId String?
+  mobileImage ProductImage? @relation("BannerMobile", fields: [mobileImageId], references: [id], onDelete: Restrict)
+  @@index([desktopImageId])
+  @@index([mobileImageId])
+  subtitle      String    @default("")
+  imageUrl      String
+  imagePublicId String?
+  imageAlt      String
+  ctaLabel      String
+  ctaPath       String
+  active        Boolean   @default(false)
+  startsAt      DateTime? @db.Timestamptz(3)
+  endsAt        DateTime? @db.Timestamptz(3)
+  position      Int       @default(0)
+  createdAt     DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime  @updatedAt @db.Timestamptz(3)
+  @@index([active, position])
+}
+
+model Customer {
+  id           String          @id @default(cuid())
+  name         String
+  phone        String          @unique
+  email        String?
+  enquiries    Enquiry[]
+  appointments Appointment[]
+  requests     CustomRequest[]
+  wishlists    Wishlist[]
+  createdAt    DateTime        @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime        @updatedAt @db.Timestamptz(3)
+}
+
+model Enquiry {
+  id           String         @id @default(cuid())
+  customerId   String?
+  customer     Customer?      @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  name         String
+  reference String? @unique @default(uuid())
+  lookupTokenHash String?
+  consentAt DateTime? @db.Timestamptz(3)
+  subject String @default("")
+  productName String?
+  preferredContact String @default("PHONE")
+  callbackAt DateTime? @db.Timestamptz(3)
+  priority String @default("NORMAL")
+  inspirationImages EnquiryImage[]
+  phone        String
+  email        String?
+  type         String
+  productId    String?
+  product      Product?       @relation(fields: [productId], references: [id], onDelete: SetNull)
+  productSku   String?
+  message      String
+  source       String
+  status       EnquiryStatus  @default(NEW)
+  followUpAt   DateTime?      @db.Timestamptz(3)
+  notes        EnquiryNote[]
+  history      EnquiryHistory[]
+  createdAt    DateTime       @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime       @updatedAt @db.Timestamptz(3)
+  @@index([status, createdAt])
+  @@index([productId])
+  @@index([customerId])
+  @@index([phone, createdAt])
+  @@index([followUpAt])
+}
+
+model EnquiryNote {
+  id        String   @id @default(cuid())
+  enquiryId String
+  enquiry   Enquiry  @relation(fields: [enquiryId], references: [id], onDelete: Cascade)
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Restrict)
+  body      String
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  @@index([enquiryId, createdAt])
+  @@index([authorId])
+}
+
+model EnquiryHistory {
+  id        String        @id @default(cuid())
+  enquiryId String
+  enquiry   Enquiry       @relation(fields: [enquiryId], references: [id], onDelete: Cascade)
+  previous  EnquiryStatus?
+  next      EnquiryStatus
+  actorId String?
+  actor User? @relation(fields: [actorId], references: [id], onDelete: Restrict)
+  @@index([actorId])
+  createdAt DateTime      @default(now()) @db.Timestamptz(3)
+  @@index([enquiryId, createdAt])
+}
+
+model Appointment {
+  id           String            @id @default(cuid())
+  customerId   String?
+  customer     Customer?         @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  name         String
+  reference String? @unique @default(uuid())
+  lookupTokenHash String?
+  consentAt DateTime? @db.Timestamptz(3)
+  alternativeAt DateTime? @db.Timestamptz(3)
+  proposedAt DateTime? @db.Timestamptz(3)
+  endsAt DateTime? @db.Timestamptz(3)
+  occupiedUntil DateTime? @db.Timestamptz(3)
+  visitors Int @default(1)
+  productId String?
+  product Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  collectionId String?
+  collection Collection? @relation(fields: [collectionId], references: [id], onDelete: SetNull)
+  publicReason String?
+  notes AppointmentNote[]
+  history AppointmentHistory[]
+  @@index([productId])
+  @@index([collectionId])
+  @@index([scheduledAt, occupiedUntil])
+  phone        String
+  email        String?
+  requestedAt  DateTime          @db.Timestamptz(3)
+  scheduledAt  DateTime?         @db.Timestamptz(3)
+  purpose      String
+  message      String            @default("")
+  status       AppointmentStatus @default(PENDING)
+  internalNotes String           @default("")
+  createdAt    DateTime          @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime          @updatedAt @db.Timestamptz(3)
+  @@index([status, requestedAt])
+  @@index([customerId])
+}
+
+model EnquiryImage {
+  enquiryId String
+  imageId String
+  enquiry Enquiry @relation(fields: [enquiryId], references: [id], onDelete: Cascade)
+  image ProductImage @relation(fields: [imageId], references: [id], onDelete: Restrict)
+  @@id([enquiryId, imageId])
+  @@index([imageId])
+}
+
+model AppointmentHistory {
+  id String @id @default(cuid())
+  appointmentId String
+  appointment Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+  previous AppointmentStatus?
+  next AppointmentStatus
+  action String
+  actorId String?
+  actor User? @relation(fields: [actorId], references: [id], onDelete: Restrict)
+  requestedAt DateTime @db.Timestamptz(3)
+  proposedAt DateTime? @db.Timestamptz(3)
+  scheduledAt DateTime? @db.Timestamptz(3)
+  endsAt DateTime? @db.Timestamptz(3)
+  reason String?
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  @@index([appointmentId, createdAt])
+  @@index([actorId])
+}
+
+model AppointmentNote {
+  id String @id @default(cuid())
+  appointmentId String
+  appointment Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+  authorId String
+  author User @relation(fields: [authorId], references: [id], onDelete: Restrict)
+  body String
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  @@index([appointmentId, createdAt])
+  @@index([authorId])
+}
+
+model ShowroomAvailability {
+  id Int @id @default(1)
+  timezone String
+  weekly Json
+  durationMinutes Int
+  bufferMinutes Int
+  capacity Int
+  closureDates String[]
+  whatsappNumber String?
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+}
+
+model CustomRequest {
+  id               String        @id @default(cuid())
+  customerId       String?
+  customer         Customer?     @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  name             String
+  phone            String
+  email            String?
+  jewelleryType    String
+  budgetMin        Decimal?      @db.Decimal(14, 2)
+  budgetMax        Decimal?      @db.Decimal(14, 2)
+  description      String
+  preferredContact String
+  referenceImages  RequestImage[]
+  status           RequestStatus @default(NEW)
+  internalNotes    String        @default("")
+  createdAt        DateTime      @default(now()) @db.Timestamptz(3)
+  updatedAt        DateTime      @updatedAt @db.Timestamptz(3)
+  @@index([status, createdAt])
+  @@index([customerId])
+}
+
+model RequestImage {
+  id        String        @id @default(cuid())
+  requestId String
+  request   CustomRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  publicId  String        @unique
+  url       String
+  createdAt DateTime      @default(now()) @db.Timestamptz(3)
+  @@index([requestId])
+}
+
+model Wishlist {
+  // Reserved for an explicitly approved future account feature. Guests use browser storage.
+  customerId String
+  productId  String
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now()) @db.Timestamptz(3)
+  @@id([customerId, productId])
+  @@index([productId])
+}
+
+model WebsiteSetting {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+}
+
+model HomepageSection {
+  key       String   @id @default(cuid())
+  type String @default("EDITORIAL")
+  internalName String @default("")
+  subtitle String @default("")
+  description String @default("")
+  ctaLabel String @default("")
+  ctaPath String @default("")
+  startsAt DateTime? @db.Timestamptz(3)
+  endsAt DateTime? @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  productId String?
+  product Product? @relation(fields: [productId], references: [id], onDelete: Restrict)
+  collectionId String?
+  collection Collection? @relation(fields: [collectionId], references: [id], onDelete: Restrict)
+  desktopImageId String?
+  desktopImage ProductImage? @relation("SectionDesktop", fields: [desktopImageId], references: [id], onDelete: Restrict)
+  mobileImageId String?
+  mobileImage ProductImage? @relation("SectionMobile", fields: [mobileImageId], references: [id], onDelete: Restrict)
+  heading   String
+  enabled   Boolean  @default(false)
+  position  Int      @unique
+  content   Json
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+  @@index([productId])
+  @@index([collectionId])
+  @@index([desktopImageId])
+  @@index([mobileImageId])
+}
+
+model HomepageVersion {
+  id Int @id @default(autoincrement())
+  payload Json
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+}
+
+model ProductView {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  day       DateTime @db.Date
+  count     Int      @default(0)
+  @@unique([productId, day])
+  @@index([day])
+}
+
+model NewsletterSubscription {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  consentAt DateTime @default(now()) @db.Timestamptz(3)
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  actorId    String?
+  actor      User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  action     String
+  entity     String
+  entityId   String
+  // Store redacted change metadata only; never passwords, session tokens or customer messages.
+  metadata   Json?
+  createdAt  DateTime @default(now()) @db.Timestamptz(3)
+  @@index([entity, entityId, createdAt])
+  @@index([actorId])
+  @@index([createdAt])
+}
+
+enum TryOnKind {
+  EARRINGS
+  NECKLACE
+}
+
+enum TryOnStatus {
+  QUEUED
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+model TryOnConfiguration {
+  id Int @id @default(1)
+  photoEnabled Boolean @default(false)
+  arEnabled Boolean @default(false)
+  eligibleCategories Category[]
+  maxUploadMb Int @default(10)
+  retentionHours Int @default(24)
+  dailyLimit Int @default(30)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+}
+
+model ProductTryOnAsset {
+  dedicatedOverlay TryOnOverlay?
+  productId String @id
+  product Product @relation(fields:[productId], references:[id], onDelete:Cascade)
+  enabled Boolean @default(false)
+  kind TryOnKind @default(EARRINGS)
+  overlayImageId String?
+  overlayImage ProductImage? @relation(fields:[overlayImageId], references:[id], onDelete:SetNull)
+  scale Float @default(1)
+  offsetX Float @default(0)
+  offsetY Float @default(0)
+  rotation Float @default(0)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+  @@index([overlayImageId])
+}
+
+// Dedicated fitting media. Never a member of Product.images or gallery ordering.
+model TryOnOverlay {
+  productId String @id
+  configuration ProductTryOnAsset @relation(fields:[productId], references:[productId], onDelete:Restrict, onUpdate:Cascade)
+  kind TryOnKind
+  publicId String @unique
+  url String
+  format String @default("png")
+  width Int
+  height Int
+  bytes Int
+  validatedAt DateTime @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+}
+
+model TryOnJob {
+  id String @id @db.Uuid
+  productId String
+  product Product @relation(fields:[productId], references:[id], onDelete:Restrict)
+  sku String
+  kind TryOnKind
+  referenceUrl String
+  ownerHash String
+  requestKey String @db.Uuid
+  requestHash String
+  grantSecret String
+  provider String
+  model String
+  promptVersion String
+  consentVersion String
+  consentAt DateTime @db.Timestamptz(3)
+  inputMime String
+  inputBytes Int
+  resultMime String?
+  resultBytes Int?
+  status TryOnStatus @default(QUEUED)
+  attempt Int @default(1)
+  errorCode String?
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  startedAt DateTime? @db.Timestamptz(3)
+  completedAt DateTime? @db.Timestamptz(3)
+  expiresAt DateTime @db.Timestamptz(3)
+  deletedAt DateTime? @db.Timestamptz(3)
+  @@unique([ownerHash,requestKey])
+  @@index([status,createdAt])
+  @@index([expiresAt])
+  @@index([productId])
+}
+
+// Anonymous per-attempt metering outlives temporary customer media and job metadata.
+model TryOnUsage {
+  jobId String @db.Uuid
+  attempt Int
+  status TryOnStatus @default(QUEUED)
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  @@id([jobId,attempt])
+  @@index([createdAt])
+  @@index([status])
+}
