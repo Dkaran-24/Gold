@@ -827,7 +827,7 @@ export function CollectionEditor({ id }: { id: string }) {
               Control visibility in showroom navigation and select merchandising classifications.
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '18px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '16px', marginBottom: '18px', minWidth: 0 }}>
               {/* Website Visibility */}
               <label className="collection-toggle-row">
                 <input
@@ -860,7 +860,7 @@ export function CollectionEditor({ id }: { id: string }) {
               <span style={{ fontSize: '13px', fontWeight: 600, color: '#382e25', display: 'block', marginBottom: '8px' }}>
                 Publication Status *
               </span>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '12px', minWidth: 0 }}>
                 <label className={`collection-radio-card ${publication === 'DRAFT' ? 'active' : ''}`}>
                   <input
                     type="radio"

@@ -13,3 +13,19 @@ export const ownerSession = cache(async () => {
   const result = await response.json();
   return result.data as { id: string; email: string; name: string };
 });
+export const optionalOwnerSession = cache(async () => {
+  const token = (await cookies()).get('showroom_session')?.value;
+  if (!token || !/^[a-f0-9]{64}$/.test(token)) return null;
+  try {
+    const response = await fetch(`${process.env.API_INTERNAL_URL || 'http://localhost:4000'}/api/auth/me`, {
+      headers: { Cookie: `showroom_session=${token}` },
+      cache: 'no-store',
+      signal: AbortSignal.timeout(5000),
+    });
+    if (!response.ok) return null;
+    const result = await response.json();
+    return result.data as { id: string; email: string; name: string };
+  } catch {
+    return null;
+  }
+});

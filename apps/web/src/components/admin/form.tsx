@@ -153,7 +153,7 @@ export function PricingModeSection({
   }, [mode, price]);
 
   return (
-    <div className="a-pricing-mode-card" style={{ gridColumn: '1 / -1', background: '#faf8f5', border: '1px solid #dcd1c2', borderRadius: '10px', padding: '20px', marginTop: '8px', marginBottom: '8px' }}>
+    <div className="a-pricing-mode-card" style={{ gridColumn: '1 / -1', background: '#faf8f5', border: '1px solid #dcd1c2', borderRadius: '10px', padding: '16px', marginTop: '8px', marginBottom: '8px', minWidth: 0, width: '100%' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px', flexWrap: 'wrap', gap: '8px' }}>
         <div>
           <span style={{ fontWeight: 600, color: '#382e25', fontSize: '14px' }}>Product Pricing & Commercial Mode *</span>
@@ -168,7 +168,7 @@ export function PricingModeSection({
 
       <input type="hidden" name="enquiryOnly" value={mode === 'enquiry' ? 'true' : 'false'} />
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '14px', marginBottom: '16px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '14px', marginBottom: '16px', minWidth: 0 }}>
         {/* Option A: Fixed Price */}
         <label
           style={{
@@ -233,8 +233,8 @@ export function PricingModeSection({
       </div>
 
       {mode === 'fixed' ? (
-        <div style={{ background: '#fff', border: '1px solid #e6dfd5', borderRadius: '8px', padding: '16px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
-          <label className="a-field" style={{ margin: 0 }}>
+        <div style={{ background: '#fff', border: '1px solid #e6dfd5', borderRadius: '8px', padding: '16px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 160px), 1fr))', gap: '16px', minWidth: 0 }}>
+          <label className="a-field" style={{ margin: 0, minWidth: 0 }}>
             <span>Public Selling Price (₹) *</span>
             <input
               name="publicPrice"
@@ -252,7 +252,7 @@ export function PricingModeSection({
             {errors['publicPrice'] && <small className="a-field-error">{errors['publicPrice']?.join(' ')}</small>}
           </label>
 
-          <label className="a-field" style={{ margin: 0 }}>
+          <label className="a-field" style={{ margin: 0, minWidth: 0 }}>
             <span>Making Charge Included / Separate (₹)</span>
             <input
               name="publicMakingCharge"

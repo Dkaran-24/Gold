@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { TryOnManagement } from '@/components/admin/try-on';
 import { ownerSession } from '@/lib/admin/session';
 import { Overview, SettingsPending } from '@/components/admin/overview';
@@ -14,6 +14,7 @@ export default async function AdminPage({ params, searchParams }: { params: Prom
   if (!path.length) return <Overview />;
   if (path.length === 1) {
     switch (module) {
+      case 'overview': redirect('/admin');
       case 'products': return <ProductList key={`products-${sp.publication ?? ''}`} initialPublication={typeof sp.publication === 'string' ? sp.publication : ''} />;
       case 'inventory': return <ProductList inventory />;
       case 'categories': return <CategoryList />;

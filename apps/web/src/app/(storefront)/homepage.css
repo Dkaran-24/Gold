@@ -475,9 +475,16 @@
   .home-split { min-height: 0; }
   .home-showroom-panel { min-height: 240px; }
   #home-showroom .home-split-media {
-    min-height: 340px;
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
     height: auto;
     aspect-ratio: 1198 / 1313;
+  }
+  .home-showroom-media,
+  .home-showroom-media-frame {
+    max-width: 100%;
+    width: 100%;
   }
   .home-showroom-media img {
     object-fit: cover;
@@ -514,4 +521,20 @@
   .home-page .home-appointment { padding-bottom: 56px; }
   .home-page .empty-state { padding: 36px 20px; }
   .home-page .empty-state h3 { font-size: 24px; }
+}
+
+@media (max-width: 480px) {
+  .home-split-copy { padding: 28px 16px 32px; }
+  .home-split-copy h2 { font-size: clamp(26px, 7vw, 34px); }
+  .home-showroom-desc { font-size: 13.5px; }
+  .home-trust-grid article { padding: 20px 16px; gap: 12px; }
+  .home-trust-grid h2 { font-size: 15px; }
+  .home-trust-grid p { font-size: 12px; }
+}
+
+@media (max-width: 380px) {
+  .home-split-copy { padding: 24px 14px 28px; }
+  .home-trust-grid article { padding: 18px 12px; }
+  .home-page .category-card h3 { font-size: 14px; padding: 12px 10px 14px; }
+  .home-showroom-panel p { font-size: 34px; }
 }

@@ -76,4 +76,12 @@
   .closing { padding-block: 46px; }
   .closingActions { flex-direction: column; align-items: stretch; max-width: 360px; margin-inline: auto; }
 }
+@media (max-width: 480px) {
+  .heroCopy h1 { font-size: clamp(28px, 8vw, 38px); }
+  .philosophyCopy h2 { font-size: clamp(26px, 7vw, 34px); }
+  .showroomCopy h2 { font-size: clamp(28px, 8vw, 38px); }
+  .closing h2 { font-size: clamp(28px, 8vw, 40px); }
+  .heroFigure { padding: 8px 0 0 8px; }
+  .heroFigure::before { inset: 0 10px 32px 0; }
+}
 @media (prefers-reduced-motion: reduce) { .page :global(.button) { transition: none; transform: none; } }

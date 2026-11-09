@@ -1081,7 +1081,7 @@ export function CmsEditor({ kind, id }: { kind: 'sections' | 'banners'; id: stri
               Upload high-resolution photography directly via Cloudinary CDN or optionally link a published product image.
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '24px', minWidth: 0 }}>
               <CmsImageUploader
                 label="Desktop Image"
                 hint="Landscape 16:9 or 1920×1080 recommended for full-width presentation."
