@@ -2,18 +2,36 @@
   "name": "showroom-platform",
   "version": "0.1.0",
   "private": true,
-  "workspaces": ["apps/*", "packages/*"],
-  "engines": { "node": ">=22.16.0" },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22.16.0"
+  },
   "scripts": {
     "dev": "concurrently -n api,web -c yellow,cyan \"npm run dev -w @showroom/api\" \"npm run dev -w @showroom/web\"",
-    "build": "npm run db:generate && npm run build -w @showroom/api && npm run build -w @showroom/web",
+    "build": "npm run build:api && npm run build -w @showroom/web",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "db:generate": "npm run generate -w @showroom/database",
     "db:validate": "npm run validate -w @showroom/database",
     "db:migrate": "npm run migrate -w @showroom/database",
     "db:deploy": "npm run deploy -w @showroom/database",
-    "db:owner": "npm run owner -w @showroom/database"
+    "db:owner": "npm run owner -w @showroom/database",
+    "build:api": "npm run build -w @showroom/api",
+    "db:build": "npm run build -w @showroom/database",
+    "install:ci": "npm ci --include=dev --ignore-scripts && npm rebuild @prisma/engines prisma esbuild --ignore-scripts=false"
   },
-  "devDependencies": { "concurrently": "^9.2.1", "typescript": "^5.9.3", "@types/node": "^22.18.0" }
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.3",
+    "@types/node": "^22.18.0"
+  },
+  "allowScripts": {
+    "@prisma/engines": true,
+    "prisma": true,
+    "esbuild": true,
+    "fsevents": false
+  }
 }
