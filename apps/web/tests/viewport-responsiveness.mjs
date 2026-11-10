@@ -70,6 +70,7 @@ function fixture(req, res, pathname) {
   if (pathname === '/api/products/' + piece.slug) return json(200, { data: piece });
   if (pathname === '/api/contact-options') return json(200, { data: { whatsappNumber: '+919000000001', timezone: 'Asia/Kolkata' } });
   if (pathname === '/api/homepage') return json(200, { data: homepageData });
+  if (pathname === '/api/try-on/studio-products') return json(200, { data: [{ product: piece, asset: { kind: 'NECKLACE' } }], hasMore: false });
   if (pathname === '/api/try-on/products') return json(200, { data: [piece] });
   if (pathname === '/api/try-on/products/' + piece.id + '/config') return json(200, { data: {
     eligible: true, photoEnabled: true, arEnabled: false, providerConfigured: true,
@@ -335,13 +336,18 @@ try {
     '--headless=new', '--no-first-run', '--no-default-browser-check', '--disable-background-networking',
     '--disable-component-update', '--disable-sync', '--window-size=1600,1050',
     '--no-proxy-server', '--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1',
-    '--user-data-dir=' + profile, origin + '/__viewport_test',
+    '--user-data-dir=' + profile, ...(process.argv.includes('--screenshots') ? ['--remote-debugging-port=0', 'about:blank'] : [origin + '/__viewport_test']),
   ], { stdio: 'ignore', windowsHide: true });
 
   browser.once('error', err => finish('FAIL: Browser failed to launch: ' + err.message));
   browser.once('exit', (code, sig) => {
     if (code !== 0 && code !== null) finish(`FAIL: Browser exited early with code ${code} / ${sig}`);
   });
+
+  if (process.argv.includes('--screenshots')) {
+    const { captureTypography } = await import('./typography-screenshots.mjs');
+    finish(await captureTypography(profile, origin));
+  }
 
   timer = setTimeout(() => finish('FAIL: Viewport test timed out after 120s'), 120000);
 

@@ -187,7 +187,7 @@
   transition: transform 0.25s ease;
 }
 .home-page .category-card:hover h3 {
-  color: var(--gold-dark);
+  color: var(--gold-text);
 }
 .home-page .category-card:hover h3 span {
   transform: translate(3px, -3px);
@@ -271,7 +271,7 @@
   border-bottom: 1px solid var(--gold);
   padding: 4px 0;
 }
-.home-page .home-connection .text-link:hover { color: var(--gold-dark); }
+.home-page .home-connection .text-link:hover { color: var(--gold-text); }
 
 /* Concierge Unavailable Status */
 .home-page .home-unavailable {
@@ -342,7 +342,7 @@
 .home-story-margin > span:first-child {
   font-size: 10.5px;
   letter-spacing: 0.22em;
-  color: var(--gold-dark);
+  color: var(--gold-text);
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -409,7 +409,7 @@
   font-family: Georgia, serif;
   font-size: 14px;
   font-style: italic;
-  color: var(--gold-dark);
+  color: var(--gold-text);
   font-weight: 600;
 }
 

@@ -1,0 +1,338 @@
+[
+  {
+    "name": "homepage",
+    "route": "/",
+    "width": 360,
+    "heading": "Jewellery That Becomes Part of Your Story.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "homepage",
+    "route": "/",
+    "width": 390,
+    "heading": "Jewellery That Becomes Part of Your Story.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "homepage",
+    "route": "/",
+    "width": 430,
+    "heading": "Jewellery That Becomes Part of Your Story.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "homepage",
+    "route": "/",
+    "width": 768,
+    "heading": "Jewellery That Becomes Part of Your Story.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "homepage",
+    "route": "/",
+    "width": 1024,
+    "heading": "Jewellery That Becomes Part of Your Story.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "homepage",
+    "route": "/",
+    "width": 1440,
+    "heading": "Jewellery That Becomes Part of Your Story.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "products",
+    "route": "/products",
+    "width": 360,
+    "heading": "Find something that feels like you.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "products",
+    "route": "/products",
+    "width": 390,
+    "heading": "Find something that feels like you.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "products",
+    "route": "/products",
+    "width": 430,
+    "heading": "Find something that feels like you.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "products",
+    "route": "/products",
+    "width": 768,
+    "heading": "Find something that feels like you.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "products",
+    "route": "/products",
+    "width": 1024,
+    "heading": "Find something that feels like you.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "products",
+    "route": "/products",
+    "width": 1440,
+    "heading": "Find something that feels like you.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "product-details",
+    "route": "/products/release-fixture",
+    "width": 360,
+    "heading": "Heritage Gold Choker",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "product-details",
+    "route": "/products/release-fixture",
+    "width": 390,
+    "heading": "Heritage Gold Choker",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "product-details",
+    "route": "/products/release-fixture",
+    "width": 430,
+    "heading": "Heritage Gold Choker",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "product-details",
+    "route": "/products/release-fixture",
+    "width": 768,
+    "heading": "Heritage Gold Choker",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "product-details",
+    "route": "/products/release-fixture",
+    "width": 1024,
+    "heading": "Heritage Gold Choker",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "product-details",
+    "route": "/products/release-fixture",
+    "width": 1440,
+    "heading": "Heritage Gold Choker",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "appointment",
+    "route": "/appointments",
+    "width": 360,
+    "heading": "Let’s findyour next favourite.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "appointment",
+    "route": "/appointments",
+    "width": 390,
+    "heading": "Let’s findyour next favourite.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "appointment",
+    "route": "/appointments",
+    "width": 430,
+    "heading": "Let’s findyour next favourite.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "appointment",
+    "route": "/appointments",
+    "width": 768,
+    "heading": "Let’s findyour next favourite.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "appointment",
+    "route": "/appointments",
+    "width": 1024,
+    "heading": "Let’s findyour next favourite.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "appointment",
+    "route": "/appointments",
+    "width": 1440,
+    "heading": "Let’s findyour next favourite.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "virtual-try-on",
+    "route": "/custom-jewellery",
+    "width": 360,
+    "heading": "See How It Looks on You.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "virtual-try-on",
+    "route": "/custom-jewellery",
+    "width": 390,
+    "heading": "See How It Looks on You.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "virtual-try-on",
+    "route": "/custom-jewellery",
+    "width": 430,
+    "heading": "See How It Looks on You.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "virtual-try-on",
+    "route": "/custom-jewellery",
+    "width": 768,
+    "heading": "See How It Looks on You.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "virtual-try-on",
+    "route": "/custom-jewellery",
+    "width": 1024,
+    "heading": "See How It Looks on You.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "virtual-try-on",
+    "route": "/custom-jewellery",
+    "width": 1440,
+    "heading": "See How It Looks on You.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "product-try-on",
+    "route": "/try-on/release-fixture",
+    "width": 360,
+    "heading": "Your Jewellery,Your Look.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "product-try-on",
+    "route": "/try-on/release-fixture",
+    "width": 390,
+    "heading": "Your Jewellery,Your Look.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "product-try-on",
+    "route": "/try-on/release-fixture",
+    "width": 430,
+    "heading": "Your Jewellery,Your Look.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "product-try-on",
+    "route": "/try-on/release-fixture",
+    "width": 768,
+    "heading": "Your Jewellery,Your Look.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "product-try-on",
+    "route": "/try-on/release-fixture",
+    "width": 1024,
+    "heading": "Your Jewellery,Your Look.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "product-try-on",
+    "route": "/try-on/release-fixture",
+    "width": 1440,
+    "heading": "Your Jewellery,Your Look.",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "admin-dashboard",
+    "route": "/admin",
+    "width": 360,
+    "heading": "A clear view of your showroom",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "admin-dashboard",
+    "route": "/admin",
+    "width": 390,
+    "heading": "A clear view of your showroom",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "admin-dashboard",
+    "route": "/admin",
+    "width": 430,
+    "heading": "A clear view of your showroom",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "admin-dashboard",
+    "route": "/admin",
+    "width": 768,
+    "heading": "A clear view of your showroom",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "admin-dashboard",
+    "route": "/admin",
+    "width": 1024,
+    "heading": "A clear view of your showroom",
+    "overflow": false,
+    "clipped": []
+  },
+  {
+    "name": "admin-dashboard",
+    "route": "/admin",
+    "width": 1440,
+    "heading": "A clear view of your showroom",
+    "overflow": false,
+    "clipped": []
+  }
+]

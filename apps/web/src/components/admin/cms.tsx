@@ -193,7 +193,7 @@ function CmsImageUploader({
           </div>
         )}
       </div>
-      <small style={{ color: '#8c7b66', marginTop: '-3px', marginBottom: '8px', display: 'block' }}>{hint}</small>
+      <small style={{ color: 'var(--a-muted)', marginTop: '-3px', marginBottom: '8px', display: 'block' }}>{hint}</small>
 
       {url ? (
         <div className="cms-image-preview-box">
@@ -382,7 +382,7 @@ export function CmsHome() {
       <div className="cms-studio-header">
         <div>
           <p className="a-eyebrow">Shree Ram Jewellers · Content Management</p>
-          <h1 style={{ margin: '0 0 8px', font: '34px Georgia, serif', color: '#382e25' }}>Homepage Studio</h1>
+          <h1 style={{ margin: '0 0 8px', font: 'var(--heading-weight) 34px Georgia, serif', color: '#382e25' }}>Homepage Studio</h1>
           <p className="a-muted" style={{ margin: 0, fontSize: '13px', maxWidth: '640px', lineHeight: 1.6 }}>
             Curate your luxury showroom storefront, hero campaigns, and seasonal showcase stories. Edits save safely as a private draft until published.
           </p>
@@ -426,7 +426,7 @@ export function CmsHome() {
       <div className="a-panel" style={{ marginBottom: '32px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
           <div>
-            <h2 style={{ margin: 0, font: '22px Georgia, serif', color: '#3a2b1c' }}>Homepage Sections</h2>
+            <h2 style={{ margin: 0, font: 'var(--heading-weight) 22px Georgia, serif', color: '#3a2b1c' }}>Homepage Sections</h2>
             <p className="a-muted" style={{ margin: '4px 0 0', fontSize: '12px' }}>
               Arrange the narrative flow of your storefront. Drag or use move buttons to adjust section order.
             </p>
@@ -441,7 +441,7 @@ export function CmsHome() {
             <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#efe5d4', color: '#886d48', display: 'grid', placeItems: 'center', margin: '0 auto 14px' }}>
               <Layers size={22} />
             </div>
-            <h3 style={{ font: '20px Georgia, serif', color: '#44321f', margin: '0 0 8px' }}>No Sections Configured</h3>
+            <h3 style={{ font: 'var(--heading-weight) 20px Georgia, serif', color: '#44321f', margin: '0 0 8px' }}>No Sections Configured</h3>
             <p className="a-muted" style={{ maxWidth: '420px', margin: '0 auto 18px', fontSize: '13px' }}>
               Create your first homepage section—such as a Hero Campaign, Featured Collection, or Bridal Showcase.
             </p>
@@ -564,7 +564,7 @@ export function CmsHome() {
       <div className="a-panel" style={{ marginBottom: '32px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
           <div>
-            <h2 style={{ margin: 0, font: '22px Georgia, serif', color: '#3a2b1c' }}>Campaign Banners</h2>
+            <h2 style={{ margin: 0, font: 'var(--heading-weight) 22px Georgia, serif', color: '#3a2b1c' }}>Campaign Banners</h2>
             <p className="a-muted" style={{ margin: '4px 0 0', fontSize: '12px' }}>
               Full-width promotional ribbons and seasonal announcements shown on the storefront.
             </p>
@@ -576,7 +576,7 @@ export function CmsHome() {
 
         {banners.length === 0 ? (
           <div className="a-empty" style={{ border: '1px dashed #dcd1be', borderRadius: '8px', padding: '40px 20px', background: '#fdfbf7' }}>
-            <h3 style={{ font: '18px Georgia, serif', color: '#44321f', margin: '0 0 6px' }}>No Campaign Banners</h3>
+            <h3 style={{ font: 'var(--heading-weight) 18px Georgia, serif', color: '#44321f', margin: '0 0 6px' }}>No Campaign Banners</h3>
             <p className="a-muted" style={{ maxWidth: '380px', margin: '0 auto 16px', fontSize: '12px' }}>
               Create top-of-homepage seasonal ribbons, festive promotional banners, or bridal atelier announcements.
             </p>
@@ -657,7 +657,7 @@ export function CmsHome() {
       {/* SECTION C: HOMEPAGE PREVIEW CALLOUT */}
       <div className="a-panel" style={{ background: '#faf6ee', border: '1px solid #e2d3bb', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px', flexWrap: 'wrap' }}>
         <div>
-          <h3 style={{ margin: '0 0 6px', font: '18px Georgia, serif', color: '#44321f' }}>Test Before Going Live</h3>
+          <h3 style={{ margin: '0 0 6px', font: 'var(--heading-weight) 18px Georgia, serif', color: '#44321f' }}>Test Before Going Live</h3>
           <p className="a-muted" style={{ margin: 0, fontSize: '12px', maxWidth: '580px' }}>
             Verify your draft typography, high-resolution imagery, and call-to-action buttons using the private live preview renderer.
           </p>
@@ -848,7 +848,7 @@ export function CmsEditor({ kind, id }: { kind: 'sections' | 'banners'; id: stri
       <div className="cms-studio-header">
         <div>
           <p className="a-eyebrow">Homepage Studio · {isSection ? 'Section Customizer' : 'Campaign Banner'}</p>
-          <h1 style={{ margin: '0 0 8px', font: '32px Georgia, serif', color: '#382e25' }}>
+          <h1 style={{ margin: '0 0 8px', font: 'var(--heading-weight) 32px Georgia, serif', color: '#382e25' }}>
             {create ? `Add ${isSection ? 'Section' : 'Banner'}` : `Edit ${internalName || heading || (isSection ? 'Section' : 'Banner')}`}
           </h1>
           <p className="a-muted" style={{ margin: 0, fontSize: '13px' }}>

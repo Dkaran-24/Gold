@@ -27,7 +27,7 @@
 .experienceList li { padding: 0 32px; border-left: 1px solid #d5c6af; }
 .experienceList li:first-child { padding-left: 0; border: 0; }
 .experienceList li:last-child { padding-right: 0; }
-.number { font-family: Georgia, serif; font-size: 24px; color: var(--gold-dark); display: block; margin-bottom: 20px; }
+.number { font-family: Georgia, serif; font-size: 24px; color: var(--gold-text); display: block; margin-bottom: 20px; }
 .experienceList h3 { font-size: 24px; margin-bottom: 12px; }
 .experienceList p { color: var(--muted); font-size: 14px; line-height: 1.8; }
 .showroom { padding-block: 76px; background: var(--champagne-light); scroll-margin-top: 110px; }

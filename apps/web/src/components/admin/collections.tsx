@@ -301,8 +301,8 @@ function CollectionImageUploader({
           </div>
         )}
       </div>
-      <small style={{ color: '#8c7b66', marginBottom: '8px', display: 'block' }}>
-        {hint} · <em style={{ fontStyle: 'normal', color: '#a0896b' }}>{aspectDesc}</em>
+      <small style={{ color: 'var(--a-muted)', marginBottom: '8px', display: 'block' }}>
+        {hint} · <em style={{ fontStyle: 'normal', color: 'var(--a-muted)' }}>{aspectDesc}</em>
       </small>
 
       {url ? (
@@ -679,7 +679,7 @@ export function CollectionEditor({ id }: { id: string }) {
               <p className="a-eyebrow" style={{ margin: 0 }}>COLLECTIONS STUDIO</p>
               {!create && c && <Badge value={c.archivedAt ? 'ARCHIVED' : c.publication} />}
             </div>
-            <h1 style={{ margin: '0 0 4px', font: '30px Georgia, serif', color: '#382e25' }}>
+            <h1 style={{ margin: '0 0 4px', font: 'var(--heading-weight) 30px Georgia, serif', color: '#382e25' }}>
               {create ? 'Create Collection' : `Edit ${c?.name || 'Collection'}`}
             </h1>
             <p className="a-muted" style={{ margin: 0, fontSize: '13px' }}>
@@ -910,7 +910,7 @@ export function CollectionEditor({ id }: { id: string }) {
                   (Optional search engine title & description)
                 </span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#8a6e49', fontSize: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--a-muted)', fontSize: '12px' }}>
                 <span>{seoOpen ? 'Hide' : 'Expand'}</span>
                 {seoOpen ? <ChevronDown size={15} /> : <ChevronRight size={15} />}
               </div>
